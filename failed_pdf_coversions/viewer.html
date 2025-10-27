@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PDF.js Viewer</title>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+  </head>
+  <body>
+    <canvas id="pdf-canvas"></canvas>
+    <script>
+      const url = "old.pdf"; // Place your PDF in the same folder
+
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://mozilla.github.io/pdf.js/build/pdf.worker.js";
+
+      pdfjsLib.getDocument(url).promise.then(async function(pdf) {
+        const canvas = document.getElementById("pdf-canvas");
+        const context = canvas.getContext("2d");
+
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+          const page = await pdf.getPage(pageNum);
+          const viewport = page.getViewport({ scale: 2 });
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+
+          await page.render({ canvasContext: context, viewport: viewport }).promise;
+          
+          // Save screenshot via headless browser
+          console.log("Page rendered:", pageNum);
+          // In Playwright, you will screenshot the canvas
+        }
+      });
+    </script>
+  </body>
+</html>

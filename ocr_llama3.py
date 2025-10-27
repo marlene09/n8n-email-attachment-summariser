@@ -7,9 +7,9 @@ import ollama
 from concurrent.futures import ThreadPoolExecutor
 
 # --- CONFIG ---
-IMAGE_PATH = "/Users/marlenepostop/Documents/n8n-agent/data/Weekly Newsletter - 24 October 2025.png"
-TEXT_DIR = "/Users/marlenepostop/Documents/n8n-agent/outputs/pdf_text"
-SUMMARY_DIR = "/Users/marlenepostop/Documents/n8n-agent/outputs/pdf_summary"
+IMAGE_PATH = "./data/Weekly Newsletter - 24 October 2025.png"
+TEXT_DIR = "./n8n-agent/outputs_ocr_ollama/pdf_text"
+SUMMARY_DIR = "./n8n-agent/outputs_ocr_ollama/pdf_summary"
 MODEL_NAME = "llama3"
 
 os.makedirs(TEXT_DIR, exist_ok=True)

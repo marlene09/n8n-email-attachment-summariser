@@ -1,3 +1,8 @@
 # Created by venv; see https://docs.python.org/3/library/venv.html
 *.data/
 *.n8nvenv
+<<<<<<< HEAD
+=======
+* .pdf
+*.txt
+>>>>>>> 58c42a7 (moved folder)
